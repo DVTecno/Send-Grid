@@ -11,7 +11,7 @@
 	<groupId>com.send-grid </groupId>
 	<artifactId>email</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Send Grid </name>
+	<name>Send Grid</name>
 	<description>Integración de la API Send Grid para envío masivo de email</description>
 	<url/>
 	<licenses>
