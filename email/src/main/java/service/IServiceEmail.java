@@ -1,4 +1,4 @@
 package service;
 
-public interface IserviceEmail {
+public interface IServiceEmail {
 }
