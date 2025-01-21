@@ -1,4 +1,4 @@
 package dto;
 
-public record EmailRequest() {
+public record EmailRequest(String email, String message, String subject) {
 }

@@ -10,7 +10,7 @@ import com.sendgrid.helpers.mail.objects.Email;
 
 import java.io.IOException;
 
-public class ServiceEmail implements IServiceEmail {
+public class ServiceEmailImpl implements IServiceEmail {
 
     @Override
     public void sendEmail(String email, String message, String subject) {
