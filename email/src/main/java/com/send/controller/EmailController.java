@@ -2,11 +2,9 @@ package com.send.controller;
 
 import com.send.dto.EmailRequest;
 import com.send.service.IServiceEmail;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -48,6 +46,17 @@ public class EmailController {
         return ResponseEntity.ok("Evento procesado");
     }
 
-    
+    @GetMapping("/details")
+    public ResponseEntity<String> fetchMessageDetails(@RequestParam String messageId) {
+        try {
+            serviceEmail.fetchMessageDetails(messageId);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Detalles del mensaje obtenidos con éxito.");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al obtener los detalles del mensaje: " + e.getMessage());
+        }
+    }
 
 }
