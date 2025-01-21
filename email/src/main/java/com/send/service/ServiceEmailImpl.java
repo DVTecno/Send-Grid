@@ -7,16 +7,13 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
 @Service
 public class ServiceEmailImpl implements IServiceEmail {
     private static final String API_KEY = System.getenv("SENDGRID_API_KEY");
-    private static final String BASE_URL = "https://api.sendgrid.com/v3/messages";
 
     @Override
     public void sendEmail(String email, String message, String subject) {
@@ -41,20 +38,17 @@ public class ServiceEmailImpl implements IServiceEmail {
     }
 
     public void fetchMessageDetails(String messageId) {
-        String url = BASE_URL + "?query=msg_id=" + messageId;
-
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + API_KEY);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-
-        if (response.getStatusCode() == HttpStatus.OK) {
-            System.out.println("Detalles del mensaje: " + response.getBody());
-        } else {
-            System.out.println("Error al obtener detalles del mensaje: " + response.getStatusCode());
+        try {
+            SendGrid sg = new SendGrid(API_KEY);
+            Request request = new Request();
+            request.setMethod(Method.GET);
+            Response response = sg.api(request);
+            System.out.println(response.getStatusCode());
+            System.out.println(response.getBody());
+            System.out.println(response.getHeaders());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+
 }
