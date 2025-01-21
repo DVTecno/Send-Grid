@@ -1,4 +1,4 @@
-package service;
+package com.send.service;
 
 import com.sendgrid.Method;
 import com.sendgrid.Request;
@@ -7,9 +7,11 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+@Service
 public class ServiceEmailImpl implements IServiceEmail {
 
     @Override

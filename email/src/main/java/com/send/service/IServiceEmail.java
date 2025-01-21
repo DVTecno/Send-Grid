@@ -1,4 +1,4 @@
-package service;
+package com.send.service;
 
 public interface IServiceEmail {
     void sendEmail(String email, String message, String subject);
