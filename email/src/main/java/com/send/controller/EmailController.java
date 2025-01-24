@@ -46,17 +46,17 @@ public class EmailController {
         return ResponseEntity.ok("Evento procesado");
     }
 
-    @GetMapping("/details")
-    public ResponseEntity<String> fetchMessageDetails(@RequestParam String messageId) {
-        try {
-            serviceEmail.fetchMessageDetails(messageId);
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("Detalles del mensaje obtenidos con éxito.");
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al obtener los detalles del mensaje: " + e.getMessage());
-        }
-    }
+//    @GetMapping("/details")
+//    public ResponseEntity<String> fetchMessageDetails(@RequestParam String messageId) {
+//        try {
+//            serviceEmail.fetchMessageDetails(messageId);
+//            return ResponseEntity.status(HttpStatus.OK)
+//                    .body("Detalles del mensaje obtenidos con éxito.");
+//
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Error al obtener los detalles del mensaje: " + e.getMessage());
+//        }
+//    }
 
 }
