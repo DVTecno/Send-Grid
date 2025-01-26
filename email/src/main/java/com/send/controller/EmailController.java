@@ -37,7 +37,6 @@ public class EmailController {
             String eventType = (String) event.get("event");
             String messageId = (String) event.get("sg_message_id");
             long timestamp = ((Number) event.get("timestamp")).longValue();
-
             System.out.println("Email: " + email);
             System.out.println("Evento: " + eventType);
             System.out.println("Message ID: " + messageId);
